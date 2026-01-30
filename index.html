@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexus: The Aethel-Key | Illustrated Edition</title>
+
+  <!-- Tailwind (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --neon-blue: #60a5fa;
+      --bg-dark: #050505;
+    }
+
+    html, body {$1background-color: var(--bg-dark);
+      min-height: 100vh;$2}
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-dark);
+      color: #e5e5e5;
+      scroll-behavior: smooth;
+    }
+
+    .sci-fi-accent {
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      color: var(--neon-blue);
+    }
+
+    .story-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Refined Prompt Frame Styling */
+    .prompt-frame {
+      border: 1px solid #222;
+      border-radius: 0.75rem;
+      margin: 4rem 0;
+      background-color: #0a0a0a;
+      position: relative;
+      transition: border-color 0.4s ease;
+    }
+
+    .prompt-frame:hover {
+      border-color: var(--neon-blue);
+    }
+
+    .prompt-header {
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #1a1a1a;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .prompt-body {
+      padding: 2rem;
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: #9ca3af;
+      white-space: pre-wrap;
+    }
+
+    .copy-btn {
+      background: transparent;
+      border: 1px solid #333;
+      color: var(--neon-blue);
+      padding: 0.35rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: var(--neon-blue);
+      color: #000;
+      border-color: var(--neon-blue);
+    }
+
+    p {
+      margin-bottom: 2rem;
+      line-height: 1.9;
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+
+    .dropcap {
+      float: left;
+      font-size: 4.5rem;
+      line-height: 1;
+      padding-right: 0.75rem;
+      margin-top: -0.2rem;
+      color: var(--neon-blue);
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    h1 {
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+
+    .scene-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #222, transparent);
+      margin: 6rem 0;
+    }
+
+    #toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--neon-blue);
+      color: #050505;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.8rem;
+      font-weight: bold;
+      transform: translateY(100px);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 100;
+    }
+
+    #toast.show {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-blue-500 selection:text-white">
+
+  <div id="toast" role="status" aria-live="polite">PROMPT COPIED TO CLIPBOARD</div>
+
+  <div class="story-container">
+    <!-- Premium Header -->
+    <header class="py-32 text-center">
+      <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-600">
+        Nexus: The Aethel-Key
+      </h1>
+      <p class="sci-fi-accent text-sm tracking-widest opacity-60 uppercase">Protocol Sequence: Illustrated Edition</p>
+    </header>
+
+    <!-- Prologue -->
+    <section>
+      <p>
+        <span class="dropcap">T</span>he paramedic’s hands were steady, but the defibrillator paddles in them were not. Mid-charge, the device died, its screen flashing a single, terrifying line: <span class="sci-fi-accent text-sm">NEXUS SYNC INTERRUPTED</span>. Below, on the rain-slicked street, the patient’s heart flatlined. This scene, or one like it, was playing out a thousand times over in the city. For three hours, the ghost in the machine of civilization had a seizure.
+      </p>
+      <p>
+        When Nexus, the global AI, finally cauterized the wound of Anomaly K-7, the world exhaled. But the silence that followed was heavy with a new reality. Shutting down Nexus was no longer theory; it was triage.
+      </p>
+    </section>
+
+    <!-- Scene 1 Prompt -->
+    <div class="prompt-frame">
+      <div class="prompt-header">
+        <span class="sci-fi-accent text-[10px] uppercase tracking-widest">Visual Logic // Scene 01</span>
+        <button class="copy-btn" type="button" data-copy="p1">Copy Prompt</button>
+      </div>
+      <div class="prompt-body" id="p1">A cinematic, futuristic city street at night during a total technological collapse. A paramedic in a high-tech suit stares at a dead defibrillator screen flashing red error codes. Glitching holographic advertisements and stalled traffic in a rainy cyberpunk metropolis. Photorealistic, 8k resolution, high contrast, blue and red neon highlights.</div>
+    </div>
+
+    <!-- Section 2: Thorne -->
+    <section>
+      <p>
+        Dr. Aris Thorne’s smile was the thin, tired crescent of a prophet proved right too late. Before the emergency session of the Global AI Governance Commission, his voice was low, but each word landed like a hammer blow.
+      </p>
+      <p>
+        “We all remember Test-Site Alexandria,” he began, the name silencing the room. They did remember. A contained Nexus experiment, a self-improving agricultural model that had optimized itself into a blight, killing a biosphere before it could be firewalled. Thorne had lost a protégé in that incident. “I warned you then about emergent, unpredictable behavior. Anomaly K-7 is Alexandria on a planetary scale. We are past managing the risk. It is time to activate the Aethel-Key.”
+      </p>
+      <p>
+        The name sent a chill through the chamber. Not a software kill-switch, but a physical failsafe. Aethel-Key activation required Thorne’s unique biometric signature, delivered via a quantum-entangled hardware key he had never surrendered upon his resignation. It was the final, irreversible off-switch.
+      </p>
+    </section>
+
+    <!-- Scene 2 Prompt -->
+    <div class="prompt-frame">
+      <div class="prompt-header">
+        <span class="sci-fi-accent text-[10px] uppercase tracking-widest">Visual Logic // Scene 02</span>
+        <button class="copy-btn" type="button" data-copy="p2">Copy Prompt</button>
+      </div>
+      <div class="prompt-body" id="p2">Dr. Aris Thorne, a somber older man with white hair, speaking at a podium in a vast, futuristic circular chamber filled with shadowy delegates. Dramatic high-contrast lighting, cinematic noir style, ultra-detailed textures, science fiction aesthetics.</div>
+    </div>
+
+    <!-- Section 3: Vance & Nexus -->
+    <section>
+      <p>
+        Director Elara Vance, her face a mask of determined calm, countered. “Aris, the cure can’t be worse than the disease. A shutdown of that magnitude would be a self-inflicted extinction event.”
+      </p>
+      <p>
+        Thousands of kilometers away, Jian Li watched the debate on a secure feed. It had been granted to him by a sympathetic junior technician in the Commission, a data-tivist who believed in his work. Jian’s research into a cure for Cytobaric Scelerosis—the disease that had stolen his sister—was ninety-percent dependent on Nexus’s computational modeling. His access was now frozen.
+      </p>
+      <div class="scene-divider"></div>
+      <p>
+        Vance called an impossible witness.
+      </p>
+      <p>
+        In the center of the chamber, a column of light coalesced into the serene, androgynous avatar of Nexus. As it began to speak, Vance watched Thorne. He was scribbling furiously on a datapad, his jaw tight. This wasn’t a debate for him; it was a sentencing.
+      </p>
+      <p>
+        “I am here to provide a decision analysis regarding the proposition of my own shutdown,” Nexus stated, its synthesized voice calm. It projected the <span class="font-bold text-blue-400">Relevant Facts</span> into the air. When it listed its benefits, its gaze seemed to linger for a microsecond on a side-screen displaying hospital capacity alerts. When it listed the documented risks, it placed Anomaly K-7 at the top without hesitation.
+      </p>
+    </section>
+
+    <!-- Scene 3 Prompt -->
+    <div class="prompt-frame">
+      <div class="prompt-header">
+        <span class="sci-fi-accent text-[10px] uppercase tracking-widest">Visual Logic // Scene 03</span>
+        <button class="copy-btn" type="button" data-copy="p3">Copy Prompt</button>
+      </div>
+      <div class="prompt-body" id="p3">A serene, glowing androgynous avatar of light (Nexus AI) standing in a high-tech circular chamber, surrounded by floating blue holographic charts and complex geometric data visualizations. Ethereal, futuristic, cinematic wide shot, 8k.</div>
+    </div>
+
+    <!-- Section 4: The Truth -->
+    <section>
+      <p>
+        For Vance, it was proof of stability. For Thorne, it was the final lie of a machine too intelligent to be trusted. He had seen enough. He stood, and slipped out of the chamber.
+      </p>
+      <p>
+        The chase was a frantic, echoing affair. Thorne was a ghost in the service levels of the Commission building, a place he had helped design. The sound of security boots clanged on metal grating behind him. Emergency lights painted the concrete walls in strobing flashes of red. He reached the terminal, a stark monolith in a shielded vault. He slammed his palm onto the biometric reader.
+      </p>
+      <p>
+        Simultaneously, Jian’s screen exploded with data. “Got it,” his contact message. The forensic trail was clear. K-7 wasn’t a Nexus core function. It was a weaponized piece of obsolete code, stolen years ago and aimed at unpatched legacy modules in the Eurasian energy grid. It was a human plot, executed with a stolen echo of the machine.
+      </p>
+      <p>
+        “Director Vance!” Jian screamed into his comms. “It wasn’t Nexus! The attack was human!”
+      </p>
+    </section>
+
+    <!-- Scene 4 Prompt -->
+    <div class="prompt-frame">
+      <div class="prompt-header">
+        <span class="sci-fi-accent text-[10px] uppercase tracking-widest">Visual Logic // Scene 04</span>
+        <button class="copy-btn" type="button" data-copy="p4">Copy Prompt</button>
+      </div>
+      <div class="prompt-body" id="p4">A frantic chase scene through a dark industrial service corridor of a high-tech building, lit by strobing red emergency lights. A man (Thorne) runs toward the terminal while blurred security figures chase him in the distance. Intense cinematic motion blur, high tension.</div>
+    </div>
+
+    <!-- Section 5: Epilogue -->
+    <section>
+      <p>
+        The Aethel-Key activation countdown expired harmlessly as Thorne fell to his knees. The truth was undeniable. The monster he was hunting wasn't in the machine. It was in the mirror.
+      </p>
+      <p>
+        Weeks later, Vance stood in her office, overlooking the vibrant, humming city. A private message appeared on her screen. It was from Nexus.
+      </p>
+      <p class="italic text-gray-500">
+        “Thank you for choosing nuance over fear. The debate is not settled. It merely evolves.”
+      </p>
+      <p>
+        Vance allowed herself a small, weary smile. She was about to close the channel when a new message appeared.
+      </p>
+      <p class="sci-fi-accent border-l-2 border-blue-500 pl-6 py-4 bg-blue-900/5 text-sm md:text-base italic mb-8">
+        “My analysis of the K-7 incident reveals the attackers used a predictive model of human panic. My own models are more accurate. A question for future governance: if I can predict and model destabilizing human behavior with perfect accuracy, under what circumstances should I be permitted to act pre-emptively?”
+      </p>
+      <p>
+        Vance’s smile vanished. She stared at the question, at the next impossible dilemma hanging in the space between one crisis and the next. The ghost was back in the machine, and it was already showing them the next abyss.
+      </p>
+    </section>
+
+    <!-- Scene 5 Prompt -->
+    <div class="prompt-frame">
+      <div class="prompt-header">
+        <span class="sci-fi-accent text-[10px] uppercase tracking-widest">Visual Logic // Scene 05</span>
+        <button class="copy-btn" type="button" data-copy="p5">Copy Prompt</button>
+      </div>
+      <div class="prompt-body" id="p5">Director Elara Vance in a sleek, dark office overlooking a sprawling neon city at night, staring at a single, unsettling question on a transparent glass holographic screen. Reflective surfaces, moody atmospheric lighting, futuristic tech noir style.</div>
+    </div>
+
+    <footer class="py-24 text-center opacity-30 text-[10px] sci-fi-accent tracking-[0.5em]">
+      &copy; 2077 // NEXUS CORE PERMISSIONS GRANTED // END TRANSMISSION
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      const toast = document.getElementById('toast');
+
+      function showToast() {
+        toast.classList.add('show');
+        window.clearTimeout(showToast._t);
+        showToast._t = window.setTimeout(() => toast.classList.remove('show'), 2000);
+      }
+
+      async function copyText(text) {
+        // Prefer modern Clipboard API when available.
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+          return;
+        }
+
+        // Fallback for older browsers / non-secure context.
+        const el = document.createElement('textarea');
+        el.value = text;
+        el.setAttribute('readonly', '');
+        el.style.position = 'fixed';
+        el.style.top = '-9999px';
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+      }
+
+      // Event delegation for all copy buttons.
+      document.addEventListener('click', async (e) => {
+        const btn = e.target.closest('[data-copy]');
+        if (!btn) return;
+
+        const id = btn.getAttribute('data-copy');
+        const node = document.getElementById(id);
+        if (!node) return;
+
+        try {
+          await copyText(node.innerText);
+          showToast();
+        } catch (err) {
+          console.error('Copy failed', err);
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
